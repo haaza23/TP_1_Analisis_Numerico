@@ -10,25 +10,25 @@ def calculoA( p, i,n ):
 
 def algo1(p, i, n, xK):
     A = calculoA(p, i, n)
-    xKMasUno = xK - ((p/xK)*( ((1+xK)^n) -1 ) -A)
+    xKMasUno = xK - ((p/xK)*( ((1+xK)**n) -1 ) -A)
     return xKMasUno
 
 def algo2(p, i, n, xK):
     A = calculoA(p, i, n)
-    xKMasUno =  ((A*(xK/p)+1)^(1/n)) -1
+    xKMasUno =  ((A*(xK/p)+1)**(1/n)) -1
     return xKMasUno
 
 def algo3(p, i, n, xK):
     A = calculoA(p, i, n)
-    xKMasUno = (p/A)*(((1+xK)^n)-1)
+    xKMasUno = (p/A)*(((1+xK)**n)-1)
     return xKMasUno
 
 def algo4(p, i, n, xK):
     A = calculoA(p, i, n)
-    xKMasUno = xK - ((p/xK)*( ((1+xK)^n) -1 ) -A)
+    xKMasUno =  (( (A*(xK/p)+1)/ ((1+xK)**(n/2) ) )**(2/n)) -1
     return xKMasUno
 
 def algo5(p, i, n, xK):
     A = calculoA(p, i, n)
-    xKMasUno = xK - ((p/xK)*( ((1+xK)^n) -1 ) -A)
+    xKMasUno = xK - ((p/xK)*( ((1+xK)**n) -1 ) -A)
     return xKMasUno
