@@ -1,5 +1,7 @@
-NP =  100849
-P = NP/700
+import numpy as npy
+
+NP =  npy.float32(100849)
+P = npy.float32(NP/700)
 
 
 
