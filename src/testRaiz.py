@@ -3,7 +3,7 @@ import numpy as np
 a = 200000
 
 def algoritmo1(i, p, n):
-    resultado = i - (((p/x)*(((1+x)**n)-1))-a)
+    resultado = i - (((p/i)*(((1+i)**n)-1))-a)
     return resultado
 
 def algoritmo2(i, p, n):
@@ -31,10 +31,10 @@ def main():
     print("Iteration: ", 0)
     print("Interest: ", i)
     while k <= 30:
-        x = algoritmo2(x, p, n)
+        i = algoritmo2(i, p, n)
         print("Iteration: ", k + 1)
-        print("Interest: ", x)
+        print("Interest: ", i)
         k += 1
 
-    print("Result: ", x)
+    print("Result: ", i)
 main()
