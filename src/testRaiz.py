@@ -1,40 +1,41 @@
 import numpy as np
 
-a = 200000
+A = 200000
 
-def algoritmo1(i, p, n):
-    resultado = i - (((p/i)*(((1+i)**n)-1))-a)
-    return resultado
+def algoritmo1(xk, P, n):
+    xkMasUno = xk - P/xk * (((1 + xk)**n) - 1) - A
+    return xkMasUno
 
-def algoritmo2(i, p, n):
-    resultado = (((a * (i / p)) + 1) ** (1 / n)) - 1
-    return resultado
+def algoritmo2(xk, P, n):
+    xkMasUno = (((A * (xk / P)) + 1) ** (1/n)) - 1
+    return xkMasUno
 
-def algoritmo3(i, p, n):
-    resultado = (p/a)*(((1 + i) ** n) - 1)
-    return resultado
+def algoritmo3(xk, P, n):
+    xkMasUno = (P/A)*(((1 + xk)**n) - 1)
+    return xkMasUno
 
-def algoritmo4(i, p, n):
-    resultado = ((((a*(i/p))+1)/((1+i)**(n/2)))**(2/n))-1
-    return resultado
+def algoritmo4(xk, P, n):
+    xkMasUno = ((((A*(xk/P))+1)/((1+xk)**(n/2)))**(2/n))-1
+    return xkMasUno
 
-def algoritmo5(i, p, n):
-    resultado = i - (((p/i)*(((1+i)**n)-1))-a)/(((((-1)*p)/(i**2))*(((1+i)**n)-1))+((p/i)*n*((1+i)**n-1)))
-    return resultado
+def algoritmo5(xk, P, n):
+    xkMasUno = xk - (((P/xk)*(((1+xk)**n)-1))-A)/(((((-1)*P)/(xk**2))*(((1+xk)**n)-1))+((P/xk)*n*((1+xk)**n-1)))
+    return xkMasUno
 
 def main():
-    padron = np.float32(100849)
+    NP = np.float32(100849)
+    P = np.float32(NP / 700)
+    n = 360
     k = np.float32(0)
-    i = np.float32(0.001)
-    n = np.float32(60)
-    p = np.float32(padron / 700)
-    print("Iteration: ", 0)
-    print("Interest: ", i)
-    while k <= 30:
-        i = algoritmo2(i, p, n)
-        print("Iteration: ", k + 1)
-        print("Interest: ", i)
+    xk = np.float32(1e-16)
+    xkSiguiente = algoritmo5(xk, P, n)
+    error = abs((xkSiguiente - xk) / xkSiguiente)
+    print('{:^10}{:^10}{:^10}{:^10}'.format('k', 'xk', 'xk+1', 'error'))
+    while (error >= 1e-5):
+        xkSiguiente = algoritmo5(xk, P, n)
+        error = abs((xkSiguiente - xk) / xkSiguiente)
+        print('{:^10}{:^10.5f}{:^10.5f}{:^10.5f}'.format(k, float(xk), float(xkSiguiente), float(error)))
+        xk = xkSiguiente
         k += 1
-
-    print("Result: ", i)
+    print("La raiz es: ", xk)
 main()

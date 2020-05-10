@@ -3,8 +3,6 @@ import numpy as npy
 NP =  npy.float32(100849)
 P = npy.float32(NP/700)
 
-
-
 def calculoA( p, i,n ):
     a = (p/i)*(((1+i)^n)-1)
     return a
